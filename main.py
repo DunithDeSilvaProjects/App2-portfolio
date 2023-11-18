@@ -23,7 +23,7 @@ content2 = """ Below you can find some of the apps i have built
 
 st.write(content2)
 
-col3 , col4 = st.columns(2)
+col3 ,empty_col,col4 = st.columns([1.5,0.5,1.5])
 
 df = pd.read_csv("data.csv",sep=";")
 
@@ -31,8 +31,15 @@ df = pd.read_csv("data.csv",sep=";")
 with col3:
     for index,row in df[:10].iterrows():
         st.header(row["title"])
+        st.write(row["description"])
+        st.image("images/"+row["image"])
+        st.write(f"[source code]({row['url']})")
+
 
 with col4:
     for index,row in df[10:20].iterrows():
         st.header(row["title"])
+        st.write(row["description"])
+        st.image("images/" + row["image"])
+        st.write(f"[source code]({row['url']})")
 
